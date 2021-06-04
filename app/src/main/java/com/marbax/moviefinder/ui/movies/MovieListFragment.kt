@@ -50,7 +50,8 @@ class MovieListFragment : BaseViewBindingFragment<MovieListFragmentBinding>() {
             adapter.submitList(it)
         }
 
-        initSearchObservers()
+        // initiate observers to make search query
+        //initSearchObservers()
 
         //TODO: it should return list of found movies
         //FIXME: it mb an bad idea to to search on observing
@@ -78,11 +79,6 @@ class MovieListFragment : BaseViewBindingFragment<MovieListFragmentBinding>() {
                 }
             }
         })
-
-        viewModel.lastQueryTest.observe(viewLifecycleOwner){
-            Snackbar.make(view, it, Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
 
         //get first page of movies
         viewModel.getMovies()

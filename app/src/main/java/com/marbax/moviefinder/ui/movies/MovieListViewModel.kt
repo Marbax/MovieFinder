@@ -19,10 +19,6 @@ class MovieListViewModel : BaseViewModel() {
     val showEvent: EventLiveData<LoadingUIEvent> = _showEvent
 
     private var page = 1
-
-    private val _lastQuery = MutableLiveData<String>()
-    val lastQueryTest: LiveData<String> = _lastQuery
-
     private var lastQuery = ""
 
     fun getMovies() {
@@ -76,7 +72,6 @@ class MovieListViewModel : BaseViewModel() {
     private fun resetOnMethodChanged(methodName: String) {
         if (lastQuery != methodName) {
             page = 1
-            _lastQuery.value = methodName
             lastQuery = methodName
             _movies.value = listOf()
         }
