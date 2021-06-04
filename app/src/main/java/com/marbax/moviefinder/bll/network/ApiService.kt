@@ -24,8 +24,7 @@ interface ApiService {
         @Query("vote_count.gte") votesGte: Int,
         @Query("sort_by") sortBy: String,
         @Query("api_key") apiKey: String
-    ):
-            Single<MovieResponse>
+    ): Single<MovieResponse>
 
     @GET("movie/{movie_id}")
     fun getMovieInfo(
