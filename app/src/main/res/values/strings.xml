@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MovieFinder</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_movies">Movies</string>
+    <string name="menu_favorites">Favorites</string>
+    <string name="menu_series">Series</string>
+    <string name="search">Search</string>
+    <string name="interval_check_exception">You should choose date interval</string>
+    <string name="details">Details</string>
+</resources>
