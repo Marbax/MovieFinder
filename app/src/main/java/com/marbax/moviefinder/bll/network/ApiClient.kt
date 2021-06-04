@@ -16,7 +16,7 @@ object ApiClient {
     private const val FIRST_PAGE = 1
     private const val SAFE_SEARCH_VOTES_COUNT = 50
     const val API_IMAGE_URL = "https://image.tmdb.org/t/p/w500"
-    private const val API_SORT_BY = "release_date.desc"
+    private const val API_SORT_BY = "primary_release_date.desc"
     private const val CREDITS = "credits"
 
     private val apiService = createApiService()
@@ -24,9 +24,10 @@ object ApiClient {
     fun getMovies(
         page: Int = FIRST_PAGE, // min 1 , max 1000
         lang: String = DEF_LANG, // pattern: ([a-z]{2})-([A-Z]{2})
+        sortBy: String = API_SORT_BY,
         apiKey: String = API_KEY
     ): Single<MovieResponse> {
-        return apiService.getMovies(page, lang, apiKey)
+        return apiService.getMovies(page, lang, sortBy, apiKey)
     }
 
     fun getMoviesByDateRange(
