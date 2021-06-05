@@ -18,7 +18,11 @@ class MovieListViewModel : BaseViewModel() {
     private val _showEvent = EventMutableLiveData<LoadingUIEvent>()
     val showEvent: EventLiveData<LoadingUIEvent> = _showEvent
 
-    private var page = 1
+    // loaded items of the total
+    private val _itemsLoadedOf = MutableLiveData<String>()
+    val itemsLoadedOf: LiveData<String> = _itemsLoadedOf
+
+    private var currentPage = 1
     private var lastQuery = ""
 
     fun getMovies() {
@@ -26,14 +30,15 @@ class MovieListViewModel : BaseViewModel() {
 
         resetOnMethodChanged(this::getMovies.name)
 
-        disposeOnCleared(ApiClient.getMovies(page),
+        disposeOnCleared(ApiClient.getMovies(currentPage),
             { response ->
                 response.results.apply {
                     _movies.value = _movies.value.orEmpty() + this
+                    _itemsLoadedOf.value =
+                        "${_movies.value?.size ?: 0}/${response.total_results}"
                 }
                 _showEvent.call(LoadingUIEvent.DisplayLoading(LoadingState.Success))
-                ++page
-
+                ++currentPage
             }, { throwable ->
                 Log.e(
                     "ApiError",
@@ -51,15 +56,16 @@ class MovieListViewModel : BaseViewModel() {
         disposeOnCleared(ApiClient.getMoviesByDateRange(
             formatDateToString(dateFrom),
             formatDateToString(dateTo),
-            page
+            currentPage
         ),
             { response ->
                 response.results.apply {
                     _movies.value = _movies.value.orEmpty() + this
+                    _itemsLoadedOf.value =
+                        "${_movies.value?.size ?: 0}/${response.total_results}"
                 }
                 _showEvent.call(LoadingUIEvent.DisplayLoading(LoadingState.Success))
-                ++page
-
+                ++currentPage
             }, { throwable ->
                 Log.e(
                     "ApiError",
@@ -71,7 +77,7 @@ class MovieListViewModel : BaseViewModel() {
 
     private fun resetOnMethodChanged(methodName: String) {
         if (lastQuery != methodName) {
-            page = 1
+            currentPage = 1
             lastQuery = methodName
             _movies.value = listOf()
         }

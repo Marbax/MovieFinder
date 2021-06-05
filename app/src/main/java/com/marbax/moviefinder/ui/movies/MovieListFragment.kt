@@ -49,6 +49,11 @@ class MovieListFragment : BaseViewBindingFragment<MovieListFragmentBinding>() {
             adapter.submitList(it)
         }
 
+        // updating info about loaded items of the total
+        viewModel.itemsLoadedOf.observe(viewLifecycleOwner) {
+            binding.movieListItemsLoadedOfTv.text = it
+        }
+
         // initiate observers to make search query
         //initSearchObservers()
 
