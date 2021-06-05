@@ -30,7 +30,8 @@
                     android:layout_height="240dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="Hold movie thumbnail"
-                    android:scaleType="fitXY" />
+                    android:scaleType="fitXY"
+                    tools:src="@tools:sample/backgrounds/scenic"/>
             </RelativeLayout>
 
             <TextView
@@ -38,14 +39,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/movie_thumb_rl"
-                android:background="@android:drawable/screen_background_dark_transparent"
+                android:background="@color/orange_700"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
-                android:textColor="@color/orange_500"
-                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
                 android:typeface="sans"
                 tools:text="Movie Title" />
 
@@ -53,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/movie_title_tv"
-                android:background="@android:drawable/screen_background_dark_transparent"
+                android:background="@color/orange_700"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -66,8 +67,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.7"
-                    android:textColor="@color/orange_200"
-                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
                     tools:text="Release Date" />
 
                 <TextView
@@ -78,9 +79,9 @@
                     android:layout_weight="0.3"
                     android:drawablePadding="5dp"
                     android:gravity="center_vertical"
-                    android:textColor="@color/orange_200"
-                    android:textSize="12sp"
-                    tools:text="Movie rating" />
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    tools:text="6.7" />
             </LinearLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
