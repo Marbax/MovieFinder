@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.snackbar.Snackbar
@@ -66,11 +65,13 @@ class MovieDetailsFragment : BaseViewBindingFragment<MovieDetailsFragmentBinding
             handleUiEvent(it, binding.movieDetailsBackdropLoadingPb)
         }
 
-        viewModel.getMovieDetails(args.movieId) { errorMsg ->
-            Snackbar.make(view, errorMsg, Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        // check for rotation
+        if (savedInstanceState == null) {
+            viewModel.getMovieDetails(args.movieId) { errorMsg ->
+                Snackbar.make(view, errorMsg, Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
+            }
         }
-
     }
 
     private fun loadImage(iv: ImageView, imgUrl: String) {

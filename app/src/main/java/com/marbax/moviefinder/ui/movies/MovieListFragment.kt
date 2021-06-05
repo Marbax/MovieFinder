@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.marbax.moviefinder.R
 import com.marbax.moviefinder.SharedViewModel
 import com.marbax.moviefinder.databinding.MovieListFragmentBinding
@@ -80,8 +79,11 @@ class MovieListFragment : BaseViewBindingFragment<MovieListFragmentBinding>() {
             }
         })
 
-        //get first page of movies
-        viewModel.getMovies()
+        // check for rotation
+        if (savedInstanceState == null) {
+            //get first page of movies
+            viewModel.getMovies()
+        }
     }
 
     //FIXME: look's pretty weird , change search logic
