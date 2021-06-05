@@ -33,7 +33,7 @@
         tools:listitem="@layout/movie_card" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:backgroundTint="@color/orange_500"
+        app:backgroundTint="@color/orange_500"
         android:id="@+id/movies_search_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

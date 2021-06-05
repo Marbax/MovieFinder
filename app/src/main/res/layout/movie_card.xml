@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -16,7 +17,6 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:background="@android:drawable/screen_background_dark_transparent"
             android:layout_height="match_parent">
 
             <RelativeLayout
@@ -31,13 +31,6 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="Hold movie thumbnail"
                     android:scaleType="fitXY" />
-
-                <ProgressBar
-                    android:id="@+id/thumb_loading_pb"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_centerInParent="true"
-                    android:visibility="gone" />
             </RelativeLayout>
 
             <TextView
@@ -45,22 +38,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/movie_thumb_rl"
+                android:background="@android:drawable/screen_background_dark_transparent"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
-                android:background="@android:drawable/screen_background_dark_transparent"
                 android:paddingRight="10dp"
-                android:textColor="@color/teal_200"
+                android:textColor="@color/orange_500"
                 android:textSize="14sp"
-                android:typeface="sans" />
+                android:typeface="sans"
+                tools:text="Movie Title" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/movie_title_tv"
-                android:orientation="horizontal"
                 android:background="@android:drawable/screen_background_dark_transparent"
+                android:orientation="horizontal"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
@@ -72,19 +66,21 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0.7"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:textColor="@color/orange_200"
+                    android:textSize="12sp"
+                    tools:text="Release Date" />
 
                 <TextView
                     android:id="@+id/movie_rating_tv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:textColor="@color/white"
                     android:layout_weight="0.3"
                     android:drawablePadding="5dp"
                     android:gravity="center_vertical"
-                    android:textSize="12sp" />
+                    android:textColor="@color/orange_200"
+                    android:textSize="12sp"
+                    tools:text="Movie rating" />
             </LinearLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

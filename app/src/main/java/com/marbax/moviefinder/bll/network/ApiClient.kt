@@ -34,7 +34,7 @@ object ApiClient {
         dateFrom: String,
         dateTo: String,
         page: Int = FIRST_PAGE,
-        votesGte: Int = SAFE_SEARCH_VOTES_COUNT, // votes count greater or equivalent (trying to weed out trash)
+        votesGte: Int = SAFE_SEARCH_VOTES_COUNT, // votes count greater or equivalent (trying to exclude trash)
         sortBy: String = API_SORT_BY,
         apiKey: String = API_KEY
     ): Single<MovieResponse> {
